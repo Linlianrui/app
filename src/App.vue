@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Header></Header>
+    <!-- 路由组件出口 -->
+    <router-view></router-view>
+    <!-- 在Login、Register隐藏非路由组件Footer -->
+    <Footer v-show="$route.meta.showFooter"></Footer>
   </div>
 </template>
 
 <script>
+import Header from './components/Header/myIndex.vue';
+import Footer from './components/Footer/myIndex.vue'
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    Footer
+  },
+  mounted(){
+    //派发一个action，获取三级联动数据
+    this.$store.dispatch("categoryList");
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

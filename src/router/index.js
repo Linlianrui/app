@@ -9,55 +9,72 @@ import Login from '@/pages/Login/myIndex.vue';
 import Register from '@/pages/Register/myIndex.vue';
 import Search from '@/pages/Search/myIndex.vue';
 import Detail from '@/pages/Detail';
+import AddCartSuccess from '@/pages/AddCartSuccess'
+import ShopCart from '@/pages/ShopCart'
 //配置路由
 export default new VueRouter({
     //配置路由
-    routes:[
+    routes: [
         {
-            path:"/detail/:skuid",
-            component:Detail,
-            meta:{
-                showFooter:true
+            path: "/detail/:skuid",
+            component: Detail,
+            meta: {
+                showFooter: true
             }
         },
         {
-            path:"/home",
-            component:Home,
-            meta:{
-                showFooter:true
+            path: "/addcartsuccess",
+            component: AddCartSuccess,
+            name: "addcartsuccess",
+            meta: {
+                showFooter: true
             }
         },
         {
-            path:"/login",
-            component:Login,
-            meta:{
-                showFooter:false
+            path: "/shopcart",
+            component: ShopCart,
+            meta: {
+                showFooter: true
             }
         },
         {
-            path:"/register",
-            component:Register,
-            meta:{
-                showFooter:false
+            path: "/home",
+            component: Home,
+            meta: {
+                showFooter: true
             }
         },
         {
-            path:"/search/:keyword",
-            component:Search,
-            meta:{
-                showFooter:true
+            path: "/login",
+            component: Login,
+            meta: {
+                showFooter: false
+            }
+        },
+        {
+            path: "/register",
+            component: Register,
+            meta: {
+                showFooter: false
+            }
+        },
+        {
+            path: "/search/:keyword",
+            component: Search,
+            meta: {
+                showFooter: true
             },
-            name:"search"
+            name: "search"
         },
         //重定向
         {
-            path:"*",
-            redirect:"/home"
+            path: "*",
+            redirect: "/home"
         }
     ],
     //滚动行为
-    scrollBehavior (to, from, savedPosition) {
+    scrollBehavior(to, from, savedPosition) {
         //y=0代表滚动条在最上方
-        return { y:0 }
+        return { y: 0 }
     }
 })

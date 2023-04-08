@@ -22,6 +22,10 @@ requests.interceptors.request.use((config)=>{
         //请求头添加一个字段(userTempId):和后台商量好
         config.headers.userTempId = store.state.detail.uuid_token;
     }
+    //需要携带token给服务器
+    if(store.state.users.token){
+        config.headers.token = store.state.users.token;
+    }
     nProgress.start();
     return config;
 });

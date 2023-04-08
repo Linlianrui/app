@@ -1,12 +1,12 @@
 <template>
     <div>
-        我是注册页
+        我是团购页面
     </div>
 </template>
 
 <script>
 export default {
-    name: '',
+    name: 'groupOrder',
 
     data() {
         return {

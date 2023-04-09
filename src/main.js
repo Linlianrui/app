@@ -8,15 +8,22 @@ import Carousel from "@/components/Carousel/myIndex.vue"
 import Pagination from "@/components/Pagination/myIndex.vue"
 //按需引入element-ui
 import {MessageBox,Button} from 'element-ui';
+//引入图片的懒加载
+//import VueLazyload from 'vue-lazyload'
+//引入表单验证插件
+import '@/plugins/veevalidate';
 
 //注册
 Vue.component(TypeNav.name,TypeNav)
 Vue.component(Carousel.name,Carousel)
 Vue.component(Pagination.name,Pagination)
+//Vue.use(VueLazyload);
+
 //注册element-ui
 Vue.component(Button.name, Button);
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$alert = MessageBox.alert;
+
 
 //引入路由
 import router from '@/router';

@@ -16,12 +16,17 @@
           <div class="content">
             <form>
               <div class="input-text clearFix">
-                <span></span>
-                <input type="text" placeholder="邮箱/用户名/手机号" v-model="phone">
+                <span class="bg"></span>
+                <input placeholder="请输入你的手机号" v-model="phone" name="phone"
+                  v-validate="{ required: true, regex: /^1\d{10}$/ }" :class="{ invalid: errors.has('phone') }" />
+                <span class="error-msg">{{ errors.first("phone") }}</span>
               </div>
               <div class="input-text clearFix">
                 <span class="pwd"></span>
-                <input type="password" placeholder="请输入密码" v-model="password">
+                <input placeholder="请输入密码" v-model="password" name="password" type="password"
+                  v-validate="{ required: true, regex: /^[0-9A-Za-z]{8,20}$/ }"
+                  :class="{ invalid: errors.has('password') }" />
+                <span class="error-msg">{{ errors.first("password") }}</span>
               </div>
               <div class="setting clearFix">
                 <label class="checkbox inline">
@@ -157,18 +162,26 @@ export default {
           .input-text {
             margin-bottom: 16px;
 
-            span {
-              float: left;
+            span {  
               width: 37px;
               height: 32px;
-              border: 1px solid #ccc;
+            }
+
+            .bg {
+              float: left;
               background: url(../../assets/icons.png) no-repeat -10px -201px;
+              border: 1px solid #ccc;
               box-sizing: border-box;
               border-radius: 2px 0 0 2px;
             }
 
+
             .pwd {
-              background-position: -72px -201px;
+              float: left;
+              background: url(../../assets/icons.png) no-repeat -72px -201px;
+              border: 1px solid #ccc;
+              box-sizing: border-box;
+              border-radius: 2px 0 0 2px;
             }
 
             input {

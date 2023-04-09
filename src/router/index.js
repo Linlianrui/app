@@ -6,20 +6,25 @@ Vue.use(VueRouter);
 //引入仓库
 import store from "@/store";
 //引入路由组件
-import Home from '@/pages/Home/myIndex.vue';
-import Login from '@/pages/Login/index.vue';
-import Register from '@/pages/Register/index.vue';
-import Search from '@/pages/Search/myIndex.vue';
-import Detail from '@/pages/Detail';
-import AddCartSuccess from '@/pages/AddCartSuccess';
-import ShopCart from '@/pages/ShopCart';
-import Trade from '@/pages/Trade';
-import Pay from '@/pages/Pay';
-import PaySuccess from '@/pages/PaySuccess';
-import Center from '@/pages/Center';
+// import Home from '@/pages/Home/myIndex.vue';
+// import Login from '@/pages/Login/index.vue';
+// import Register from '@/pages/Register/index.vue';
+// import Search from '@/pages/Search/myIndex.vue';
+// import Detail from '@/pages/Detail';
+// import AddCartSuccess from '@/pages/AddCartSuccess';
+// import ShopCart from '@/pages/ShopCart';
+// import Trade from '@/pages/Trade';
+// import Pay from '@/pages/Pay';
+// import PaySuccess from '@/pages/PaySuccess';
+// import Center from '@/pages/Center';
 //引入二级路由
-import MyOrder from '@/pages/Center/myOrder';
-import GroupOrder from '@/pages/Center/groupOrder';
+// import MyOrder from '@/pages/Center/myOrder';
+// import GroupOrder from '@/pages/Center/groupOrder';
+
+/*
+    路由懒加载
+    component:()=>import('@/pages/XXX')
+*/
 
 
 //配置路由
@@ -28,14 +33,14 @@ const router = new VueRouter({
     routes: [
         {
             path: "/detail/:skuid",
-            component: Detail,
+            component: () => import('@/pages/Detail'),
             meta: {
                 showFooter: true
             }
         },
         {
             path: "/center",
-            component: Center,
+            component: () => import('@/pages/Center'),
             meta: {
                 showFooter: true
             },
@@ -43,12 +48,12 @@ const router = new VueRouter({
             children: [
                 {
                     path: 'myorder',
-                    component: MyOrder,
+                    component: () => import('@/pages/Center/myOrder'),
 
                 },
                 {
                     path: 'grouporder',
-                    component: GroupOrder,
+                    component: () => import('@/pages/Center/groupOrder'),
                 },
                 //重定向
                 {
@@ -59,7 +64,7 @@ const router = new VueRouter({
         },
         {
             path: "/paysuccess",
-            component: PaySuccess,
+            component: () => import('@/pages/PaySuccess'),
             meta: {
                 showFooter: true
             },
@@ -75,7 +80,7 @@ const router = new VueRouter({
         },
         {
             path: "/pay",
-            component: Pay,
+            component: () => import('@/pages/Pay'),
             meta: {
                 showFooter: true
             },
@@ -91,7 +96,7 @@ const router = new VueRouter({
         },
         {
             path: "/trade",
-            component: Trade,
+            component: () => import('@/pages/Trade'),
             meta: {
                 showFooter: true
             },
@@ -107,44 +112,44 @@ const router = new VueRouter({
         },
         {
             path: "/addcartsuccess",
-            component: AddCartSuccess,
+            component: () => import('@/pages/AddCartSuccess'),
             name: "addcartsuccess",
             meta: {
                 showFooter: true
             },
-            
+
         },
         {
             path: "/shopcart",
-            component: ShopCart,
+            component: () => import('@/pages/ShopCart'),
             meta: {
                 showFooter: true
             }
         },
         {
             path: "/home",
-            component: Home,
+            component: () => import('@/pages/Home/myIndex.vue'),
             meta: {
                 showFooter: true
             }
         },
         {
             path: "/login",
-            component: Login,
+            component: () => import('@/pages/Login'),
             meta: {
                 showFooter: false
             }
         },
         {
             path: "/register",
-            component: Register,
+            component: () => import('@/pages/Register'),
             meta: {
                 showFooter: false
             }
         },
         {
             path: "/search/:keyword",
-            component: Search,
+            component: () => import('@/pages/Search/myIndex.vue'),
             meta: {
                 showFooter: true
             },

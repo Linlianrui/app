@@ -11,7 +11,6 @@
 <script>
 import Header from './components/Header/myIndex.vue';
 import Footer from './components/Footer/myIndex.vue'
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
